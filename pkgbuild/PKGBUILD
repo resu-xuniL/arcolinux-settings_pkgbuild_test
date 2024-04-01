@@ -1,0 +1,25 @@
+# Maintainer: resu-xuniL <linux@lavache.com>
+
+workdir=$(pwd)
+pkgname=arcolinux-settings-test-git
+_pkgname=arcolinux-settings
+_destname="/etc/skel"
+pkgver=24.04
+pkgrel=01
+pkgdesc="Configuration setting for ArcoLinux TEST"
+arch=('any')
+url="https://github.com/resu-xuniL/${_pkgname}"
+license=('GPL3')
+makedepends=('git')
+depends=('bash')
+conflicts=('settings-for-arcolinux-git')
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=(${_pkgname}::"git+https://github.com/resu-xuniL/${_pkgname}.git")
+sha256sums=('SKIP')
+install='readme.install'
+package() {
+	install -dm755 ${pkgdir}${_destname}
+	cp -r  "${srcdir}/${_pkgname}"* ${pkgdir}${_destname}
+	awk -i inplace -F= -v OFS== '$1=="pkgrel" {$2++; if ($2<10) gsub($2,"0"$2,$2)} 1' ${workdir}/PKGBUILD
+}
