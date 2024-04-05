@@ -1,12 +1,12 @@
 post_install() {
-    echo "********************************************************************"
+    echo "**********************************************************************"
     CURRENT_USER=$(who | cut -d ' ' -f1 | uniq)
     rm -r /home/${CURRENT_USER}/Documents/arcolinux-settings
     sudo mv /etc/skel/arcolinux-settings "/home/${CURRENT_USER}/Documents"
     sudo chown -R ${CURRENT_USER} "/home/${CURRENT_USER}/Documents/arcolinux-settings"
     chmod +x "/home/${CURRENT_USER}/Documents/arcolinux-settings/run.sh"
     echo -e "\n\e[32;1m** The files have been installed in /home/${CURRENT_USER}/Documents directory **\e[0m\n"
-    echo "********************************************************************"
+    echo "**********************************************************************"
 }
 
 post_upgrade() {
