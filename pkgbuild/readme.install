@@ -1,6 +1,6 @@
 post_install() {
     echo "**********************************************************************"
-    rm -r /home/${SUDO_USER}/Documents/arcolinux-settings
+    if [[ -d "/home/${SUDO_USER}/Documents/arcolinux-settings" ]]; then rm -r /home/${SUDO_USER}/Documents/arcolinux-settings; fi
     sudo mv /etc/skel/arcolinux-settings "/home/${SUDO_USER}/Documents"
     sudo chown -R ${SUDO_USER} "/home/${SUDO_USER}/Documents/arcolinux-settings"
     chmod +x "/home/${SUDO_USER}/Documents/arcolinux-settings/run.sh"
