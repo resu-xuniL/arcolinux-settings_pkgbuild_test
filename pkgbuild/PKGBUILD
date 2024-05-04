@@ -18,6 +18,7 @@ options=(!strip !emptydirs)
 source=(${_pkgname}::"git+https://github.com/resu-xuniL/${_pkgname}.git")
 sha256sums=('SKIP')
 install='readme.install'
+PKGDEST="/home/wam/Documents/arcolinux-settings_repo_test/x86_64"
 package() {
 	install -dm755 ${pkgdir}${_destname}
 	cp -r  "${srcdir}/${_pkgname}"* ${pkgdir}${_destname}
